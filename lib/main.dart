@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:movie_ticket_app/home_screen.dart';
 import 'package:movie_ticket_app/splash_screen.dart';
 
 void main() async {
@@ -13,6 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Future<FirebaseApp> initialization = Firebase.initializeApp();
+    const storage = FlutterSecureStorage();
+    Future<bool> chechLoginStatus() async {
+      String? value = await storage.read(key: 'uid');
+      if (value == null) {
+        return false;
+      }
+      return true;
+    }
+
     return FutureBuilder(
         future: initialization,
         builder: (context, snapshot) {
@@ -30,7 +41,19 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
-            home: const SplashScreen(),
+            home: FutureBuilder(
+              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                if (snapshot.data == false) {
+                  return const SplashScreen();
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Container(
+                      color: Colors.white,
+                      child: const Center(child: CircularProgressIndicator()));
+                }
+                return const HomeScreenDemo();
+              },
+            ),
           );
         });
   }

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:movie_ticket_app/change_password.dart';
 import 'package:movie_ticket_app/dashboard.dart';
 import 'package:movie_ticket_app/login_screen.dart';
@@ -13,6 +14,8 @@ class HomeScreenDemo extends StatefulWidget {
 }
 
 class _HomeScreenDemoState extends State<HomeScreenDemo> {
+  final storage = const FlutterSecureStorage();
+
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const Dashboard(),
@@ -36,6 +39,7 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
             ElevatedButton(
                 onPressed: () async => {
                       await FirebaseAuth.instance.signOut(),
+                      await storage.delete(key: 'uid'),
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
