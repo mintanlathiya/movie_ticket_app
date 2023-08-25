@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:movie_ticket_app/forgotpassword.dart';
 import 'package:movie_ticket_app/home_screen.dart';
 import 'package:movie_ticket_app/signup_screen.dart';
@@ -17,15 +18,16 @@ class _LogInState extends State<LogIn> {
   String email = "", password = "";
 
   final _formkey = GlobalKey<FormState>();
-
+  final storage = const FlutterSecureStorage();
   TextEditingController useremailcontroller = TextEditingController();
   TextEditingController userpasswordcontroller = TextEditingController();
 
   userLogin() async {
     try {
-      await FirebaseAuth.instance
+      UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-
+      print(userCredential.user?.uid);
+      await storage.write(key: 'uid', value: userCredential.user?.uid);
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const HomeScreenDemo()));
     } on FirebaseAuthException catch (e) {
@@ -157,41 +159,31 @@ class _LogInState extends State<LogIn> {
                   const SizedBox(
                     height: 30.0,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      if (_formkey.currentState!.validate()) {
-                        email = useremailcontroller.text;
-                        password = userpasswordcontroller.text;
-                        userLogin();
-
-                        setState(() {});
-                      }
-                    },
-                    child: Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const HomeScreenDemo(),
-                              ));
-                        },
-                        child: Container(
-                          width: 150,
-                          height: 55,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(30)),
-                          child: const Center(
-                              child: Text(
-                            "Login",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold),
-                          )),
-                        ),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        if (_formkey.currentState!.validate()) {
+                          email = useremailcontroller.text;
+                          password = userpasswordcontroller.text;
+                          userLogin();
+                          setState(() {});
+                        }
+                      },
+                      child: Container(
+                        width: 150,
+                        height: 55,
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(30)),
+                        child: const Center(
+                            child: Text(
+                          "Login",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold),
+                        )),
                       ),
                     ),
                   ),
