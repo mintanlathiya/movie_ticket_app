@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/constants/constants.dart';
+import 'package:movie_ticket_app/screen/home/components/background_list_view.dart';
 import 'package:movie_ticket_app/screen/home/components/custom_appbar.dart';
 import 'package:movie_ticket_app/screen/home/components/movie_list_view.dart';
 
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         alignment: Alignment.bottomCenter,
         children: [
           //Background of home screen
-          //BackgroundListView(backgroundScrollController),
+          BackgroundListView(backgroundScrollController),
 
           //Movie detail List view
           MovieListView(

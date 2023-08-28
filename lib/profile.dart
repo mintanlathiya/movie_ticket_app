@@ -33,35 +33,38 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      child: Column(
-        children: [
-          Text(
-            'User ID: $uid',
-            style: const TextStyle(fontSize: 18.0),
-          ),
-          Row(
-            children: [
-              Text(
-                'Email: $email',
-                style: const TextStyle(fontSize: 18.0),
-              ),
-              user!.emailVerified
-                  ? const Text(
-                      'verified',
-                      style: TextStyle(fontSize: 18.0, color: Colors.blueGrey),
-                    )
-                  : TextButton(
-                      onPressed: () => {verifyEmail()},
-                      child: const Text('Verify Email'))
-            ],
-          ),
-          Text(
-            'Created: $creationTime',
-            style: const TextStyle(fontSize: 18.0),
-          ),
-        ],
+    return SafeArea(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        child: Column(
+          children: [
+            Text(
+              'User ID: $uid',
+              style: const TextStyle(fontSize: 18.0),
+            ),
+            Row(
+              children: [
+                Text(
+                  'Email: $email',
+                  style: const TextStyle(fontSize: 18.0),
+                ),
+                user!.emailVerified
+                    ? const Text(
+                        'verified',
+                        style:
+                            TextStyle(fontSize: 18.0, color: Colors.blueGrey),
+                      )
+                    : TextButton(
+                        onPressed: () => {verifyEmail()},
+                        child: const Text('Verify Email'))
+              ],
+            ),
+            Text(
+              'Created: $creationTime',
+              style: const TextStyle(fontSize: 18.0),
+            ),
+          ],
+        ),
       ),
     );
   }

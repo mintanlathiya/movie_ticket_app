@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/constants/constants.dart';
 import 'package:movie_ticket_app/models/movie_model.dart';
+import 'package:movie_ticket_app/screen/details/components/background.dart';
+import 'package:movie_ticket_app/screen/details/components/buy_button.dart';
 import 'package:movie_ticket_app/screen/details/components/costom_back_button.dart';
+import 'package:movie_ticket_app/screen/details/components/detail_rubber_sheet.dart';
 import 'package:rubber/rubber.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -46,18 +49,18 @@ class _DetailScreenState extends State<DetailScreen>
       body: Stack(
         alignment: Alignment.center,
         children: [
-          //Background movie image
-          // Background(background: widget.movie!.image),
+          // Background movie image
+          Background(background: widget.movie!.image),
 
-          // //Buttom sheet
-          // DetailRubberSheet(
-          //   widget.movie!,
-          //   rubberSheetScrollController!,
-          //   rubberAnimationSheetController!,
-          // ),
+          //Buttom sheet
+          DetailRubberSheet(
+            widget.movie!,
+            rubberSheetScrollController!,
+            rubberAnimationSheetController!,
+          ),
 
           //Buy button
-          // BuyButton(widget.movie!.name),
+          BuyButton(widget.movie!.name),
 
           //Back button
           CustomBackButton(context),

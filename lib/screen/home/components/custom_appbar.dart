@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/constants/constants.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatefulWidget {
   const CustomAppBar({super.key});
 
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -15,20 +20,28 @@ class CustomAppBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              height: size.height * 0.075,
-              width: size.width * 0.15,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: white.withOpacity(0.35),
+            Builder(builder: (context) {
+              return GestureDetector(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                  setState(() {});
+                },
+                child: Container(
+                  height: size.height * 0.075,
+                  width: size.width * 0.15,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: white.withOpacity(0.35),
+                      ),
+                      borderRadius: BorderRadius.circular(20.0)),
+                  child: const Icon(
+                    Icons.clear_all_rounded,
+                    color: white,
+                    size: 30.0,
                   ),
-                  borderRadius: BorderRadius.circular(20.0)),
-              child: const Icon(
-                Icons.clear_all_rounded,
-                color: white,
-                size: 30.0,
-              ),
-            ),
+                ),
+              );
+            }),
             Container(
               height: size.height * 0.075,
               width: size.width * 0.7,
