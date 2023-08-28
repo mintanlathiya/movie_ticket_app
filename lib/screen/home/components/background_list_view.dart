@@ -22,7 +22,7 @@ class _BackgroundListViewState extends State<BackgroundListView> {
       controller: widget.backgroundScrollController,
       padding: EdgeInsets.zero,
       reverse: true,
-      itemCount: movieData.movieList!.length,
+      itemCount: movieData.movieList.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (ctx, index) {
         return SizedBox(
@@ -35,7 +35,7 @@ class _BackgroundListViewState extends State<BackgroundListView> {
                 left: -size.width / 3,
                 right: -size.width / 3,
                 child: Image(
-                  image: movieData.movieList![index].image.image,
+                  image: movieData.movieList[index].image.image,
                   fit: BoxFit.cover,
                 ),
               ),
