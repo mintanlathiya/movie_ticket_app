@@ -115,6 +115,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       email = mailcontroller.text;
                                     });
                                     resetPassword();
+                                    Navigator.pop(context);
                                   }
                                 },
                                 child: Container(

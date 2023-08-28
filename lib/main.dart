@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final Future<FirebaseApp> initialization = Firebase.initializeApp();
     const storage = FlutterSecureStorage();
-    Future<bool> chechLoginStatus() async {
+    Future<bool> checkLoginStatus() async {
       String? value = await storage.read(key: 'uid');
       if (value == null) {
         return false;
