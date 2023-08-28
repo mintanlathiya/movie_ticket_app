@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MovieCastModel {
-  String? name;
-  Image? photo;
+  String name;
+  Image photo;
 
-  MovieCastModel({this.name, this.photo});
+  MovieCastModel({required this.name, required this.photo});
 }

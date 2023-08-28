@@ -100,15 +100,15 @@ class _MovieIndexState extends State<MovieIndex> {
               alignment: Alignment.center,
               child: Image(
                 width: size.width / 2.5,
-                image: movieData.movieList![widget.index].imageLogo.image,
+                image: movieData.movieList[widget.index].imageLogo.image,
               ),
             ),
           ),
-          GenresFormat(movieData.movieList![widget.index].gener, white),
+          GenresFormat(movieData.movieList[widget.index].gener, white),
           SizedBox(
             height: size.height * .005,
           ),
-          StarRating(movieData.movieList![widget.index].rating),
+          StarRating(movieData.movieList[widget.index].rating),
           SizedBox(
             height: size.height * .01,
           ),
@@ -125,7 +125,7 @@ class _MovieIndexState extends State<MovieIndex> {
                 context,
                 PageRouteBuilder(
                     pageBuilder: (context, a1, a2) => DetailScreen(
-                          movie: movieData.movieList![widget.index],
+                          movie: movieData.movieList[widget.index],
                           size: size,
                         ))),
             child: Container(
@@ -151,7 +151,7 @@ class _MovieIndexState extends State<MovieIndex> {
               context,
               PageRouteBuilder(
                 pageBuilder: (context, a1, a2) => DetailScreen(
-                  movie: movieData.movieList![widget.index],
+                  movie: movieData.movieList[widget.index],
                   size: size,
                 ),
               ),
@@ -159,7 +159,7 @@ class _MovieIndexState extends State<MovieIndex> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(40.0),
               child: Image(
-                image: movieData.movieList![widget.index].image.image,
+                image: movieData.movieList[widget.index].image.image,
                 width: size.width * 0.5,
                 height: size.height * 0.35,
               ),
@@ -180,7 +180,7 @@ class _MovieIndexState extends State<MovieIndex> {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      movieData.movieList![widget.index].name,
+                      movieData.movieList[widget.index].name,
                       style: TextStyle(
                           color: white,
                           fontSize: size.width / 14,

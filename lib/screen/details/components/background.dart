@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/constants/constants.dart';
 
 class Background extends StatefulWidget {
-  final Image? background;
+  final Image background;
 
-  const Background({super.key, this.background});
+  const Background({super.key, required this.background});
 
   @override
   _BackgroundState createState() => _BackgroundState();
@@ -30,7 +30,7 @@ class _BackgroundState extends State<Background> {
         child: Stack(
           children: [
             Image(
-              image: widget.background!.image,
+              image: widget.background.image,
               width: size.width,
               height: size.height,
               fit: BoxFit.cover,

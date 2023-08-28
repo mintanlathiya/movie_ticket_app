@@ -38,7 +38,7 @@ class _DetailRubberSheetState extends State<DetailRubberSheet> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image(
-                        image: widget.movie.castList[index].photo!.image,
+                        image: widget.movie.castList[index].photo.image,
                         width: size.width / 6,
                       ),
                     ),
@@ -46,7 +46,7 @@ class _DetailRubberSheetState extends State<DetailRubberSheet> {
                       height: 6.0,
                     ),
                     Text(
-                      widget.movie.castList[index].name!,
+                      widget.movie.castList[index].name,
                       style: TextStyle(
                         color: black.withOpacity(0.6),
                         fontSize: 12,

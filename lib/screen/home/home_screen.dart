@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/constants/constants.dart';
 import 'package:movie_ticket_app/screen/home/components/custom_appbar.dart';
+import 'package:movie_ticket_app/screen/home/components/movie_list_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,22 +27,22 @@ class _HomeScreenState extends State<HomeScreen> {
           .jumpTo(movieScrollController.offset * (size.width / movieItemWidth));
     });
 
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: black,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           //Background of home screen
-          // BackgroundListView(backgroundScrollController),
+          //BackgroundListView(backgroundScrollController),
 
-          // //Movie detail List view
-          // MovieListView(
-          //   movieScrollController,
-          //   movieItemWidth,
-          // ),
+          //Movie detail List view
+          MovieListView(
+            movieScrollController,
+            movieItemWidth,
+          ),
 
           //Appbar
-          CustomAppBar(),
+          const CustomAppBar(),
         ],
       ),
     );

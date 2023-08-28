@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/constants/constants.dart';
 import 'package:movie_ticket_app/models/movie_model.dart';
 import 'package:movie_ticket_app/screen/details/components/costom_back_button.dart';
-import 'package:movie_ticket_app/screen/details/components/detail_rubber_sheet.dart';
 import 'package:rubber/rubber.dart';
 
 class DetailScreen extends StatefulWidget {
   final MovieModel? movie;
 
-  final Size? size;
+  final Size size;
 
-  const DetailScreen({super.key, this.movie, this.size});
+  const DetailScreen({super.key, this.movie, this.size = const Size(0, 0)});
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
@@ -29,7 +28,7 @@ class _DetailScreenState extends State<DetailScreen>
     rubberAnimationSheetController = RubberAnimationController(
         vsync: this,
         lowerBoundValue:
-            AnimationControllerValue(pixel: widget.size!.height * 0.75),
+            AnimationControllerValue(pixel: widget.size.height * 0.75),
         dismissable: false,
         upperBoundValue: AnimationControllerValue(percentage: 0.9),
         duration: const Duration(milliseconds: 300),
@@ -48,17 +47,17 @@ class _DetailScreenState extends State<DetailScreen>
         alignment: Alignment.center,
         children: [
           //Background movie image
-          //Background(background: widget.movie!.image),
+          // Background(background: widget.movie!.image),
 
           // //Buttom sheet
-          DetailRubberSheet(
-            widget.movie!,
-            rubberSheetScrollController!,
-            rubberAnimationSheetController!,
-          ),
+          // DetailRubberSheet(
+          //   widget.movie!,
+          //   rubberSheetScrollController!,
+          //   rubberAnimationSheetController!,
+          // ),
 
           //Buy button
-          //BuyButton(widget.movie!.name!),
+          // BuyButton(widget.movie!.name),
 
           //Back button
           CustomBackButton(context),

@@ -43,7 +43,7 @@ class _MovieListViewState extends State<MovieListView> {
             onItemFocus: (item) {},
             itemSize: widget.movieItemWidth,
             padding: EdgeInsets.zero,
-            itemCount: movieData.movieList!.length,
+            itemCount: movieData.movieList.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return MovieIndex(
